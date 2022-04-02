@@ -23,7 +23,7 @@ players = pygame.sprite.GroupSingle()
 
 # Creating Sprites
 floor = Tile((0, SCREEN_HEIGHT-100), (SCREEN_WIDTH-200, 75))
-player = Player((SCREEN_WIDTH//2, SCREEN_HEIGHT//2), (32, 64))
+player = Player((SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
 
 # Adding Sprites to Sprite Groups
 tiles.add(floor)

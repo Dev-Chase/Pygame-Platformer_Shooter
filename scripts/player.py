@@ -2,16 +2,13 @@ import pygame
 from colours import colours
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, size):
+    def __init__(self, pos):
         # Calling the parent Classe's __init__ method
         super().__init__()
 
         # Setting Core attributes
-        self.image = pygame.Surface(size).convert()
+        self.image = pygame.image.load('./assets/player.png').convert()
         self.rect = self.image.get_rect(topleft=pos)
-
-        # Filling the Player with red
-        self.image.fill(colours['red'])
         
         # Setting Movement Attributes
         self.wlksp = 6
