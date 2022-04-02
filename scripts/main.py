@@ -6,6 +6,7 @@ from colours import colours
 from base import *
 from tile import Tile
 from player import Player
+from gun import Gun
 
 # Pygame Setup
 pygame.init()
@@ -19,15 +20,18 @@ pygame.display.set_caption('Platformer Shooter')
 
 # Creating Sprite Groups
 tiles = pygame.sprite.Group()
-players = pygame.sprite.GroupSingle()
+player_group = pygame.sprite.GroupSingle()
+gun_group = pygame.sprite.GroupSingle()
 
 # Creating Sprites
-floor = Tile((0, SCREEN_HEIGHT-100), (SCREEN_WIDTH-200, 75))
+floor = Tile((0, SCREEN_HEIGHT-250), (SCREEN_WIDTH-200, 75))
 player = Player((SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
+gun = Gun(player)
 
 # Adding Sprites to Sprite Groups
 tiles.add(floor)
-players.add(player)
+player_group.add(player)
+gun_group.add(gun)
 
 seed(randint(0, 9999999999999999999999999999999))
 while True:
@@ -38,12 +42,14 @@ while True:
             
     # Game Logic goes here
     player.update(tiles)
+    gun.update(player)
     
     display.fill(colours['black'])
     
     # Drawing Code goes here
     tiles.draw(display)
-    players.draw(display)
+    player_group.draw(display)
+    gun_group.draw(display)
     
     screen.blit(pygame.transform.scale(display, SCREEN_SIZE), offs)
     
