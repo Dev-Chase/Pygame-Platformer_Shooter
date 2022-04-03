@@ -48,7 +48,8 @@ class Player(pygame.sprite.Sprite):
                     self.move.x = 0
                 else: print('wtf')
     
-    def update(self, tiles):
+    def update(self, tiles, gun):
+        gun.update(self)
         keys = pygame.key.get_pressed()
         
         if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and not (keys[pygame.K_LEFT] or keys[pygame.K_a]):
